@@ -7,6 +7,7 @@ import observer.*;
 import state.*;
 import strategy.*;
 import template.*;
+import visitor.*;
 
 import java.util.List;
 
@@ -195,5 +196,18 @@ public class Main {
             bruteForce.registerFailure(request.ip);
         }
         System.out.println("\n\n");
+
+        // Testing VISITOR graph
+        List<GraphNode> nodes = List.of(
+                new City("Berlin"),
+                new Industry("Automotive"),
+                new SightseeingArea("Brandenburg Gate")
+        );
+
+        Graph graph = new Graph(nodes);
+
+        System.out.println("=== XML Export ===");
+        NodeVisitor xmlExporter = new XMLExportVisitor();
+        graph.export(xmlExporter);
     }
 }
