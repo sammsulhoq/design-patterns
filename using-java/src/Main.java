@@ -1,3 +1,4 @@
+import chainOfResponsibility.*;
 import command.*;
 import iterator.*;
 import mediator.CustomerProfileDialog;
@@ -172,6 +173,27 @@ public class Main {
         dialog.dogNameField.setText(""); // Reset dog name
 
         dialog.submitButton.click(); // Should throw error
+        System.out.println("\n\n");
+
+        // Testing CHAIN OF RESPONSIBILITY pattern
+        Request request = new Request("user", "pass", "192.168.1.10", "/getOrders");
+
+        // Setup chain
+        BruteForceProtectionHandler bruteForce = new BruteForceProtectionHandler();
+        bruteForce
+                .setNext(new AuthenticationHandler())
+                .setNext(new SanitizationHandler())
+                .setNext(new AuthorizationHandler())
+                .setNext(new CacheHandler());
+
+        // Execute chain
+        boolean success = bruteForce.handle(request);
+        if (success) {
+            System.out.println("Request processed successfully.");
+        } else {
+            System.out.println("Request failed during validation.");
+            bruteForce.registerFailure(request.ip);
+        }
         System.out.println("\n\n");
     }
 }
