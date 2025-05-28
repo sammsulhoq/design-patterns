@@ -1,10 +1,7 @@
-import iterator.FaceBook;
-import iterator.Profile;
-import iterator.ProfileIterator;
-import memento.Editor;
-import memento.History;
-import state.Document;
-import state.User;
+import iterator.*;
+import memento.*;
+import state.*;
+import strategy.*;
 
 import java.util.List;
 
@@ -52,18 +49,39 @@ public class Main {
         FaceBook facebook = new FaceBook();
         facebook.addFriends("alice@company.com", List.of(bob, charlie, diana));
 
-        // Get friends iterator
+            // Get friends iterator
         System.out.println("Alice's Friends:");
         ProfileIterator friendsIterator = facebook.createFriendsIterator("alice@company.com");
         while (friendsIterator.hasNext()) {
             System.out.println(friendsIterator.getNext());
         }
 
-        // Get colleagues iterator
+            // Get colleagues iterator
         System.out.println("\nAlice's Colleagues:");
         ProfileIterator colleaguesIterator = facebook.createColleaguesIterator("alice@company.com");
         while (colleaguesIterator.hasNext()) {
             System.out.println(colleaguesIterator.getNext());
         }
+        System.out.println("\n\n");
+
+        // Testing STRATEGY pattern
+        Navigator navigator = new Navigator();
+
+        navigator.setStrategy(new CarRouteStrategy());
+        navigator.buildRoute("Hotel", "Museum");
+
+        navigator.setStrategy(new WalkingRouteStrategy());
+        navigator.buildRoute("Museum", "Cafe");
+
+        navigator.setStrategy(new PublicTransportRouteStrategy());
+        navigator.buildRoute("Cafe", "Theater");
+
+        navigator.setStrategy(new CyclingRouteStrategy());
+        navigator.buildRoute("Theater", "Park");
+
+        navigator.setStrategy(new TouristAttractionRouteStrategy());
+        navigator.buildRoute("Park", "Historic Castle");
+
+        System.out.println("\n\n");
     }
 }
