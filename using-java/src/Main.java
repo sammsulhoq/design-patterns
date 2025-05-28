@@ -2,6 +2,7 @@ import iterator.*;
 import memento.*;
 import state.*;
 import strategy.*;
+import template.*;
 
 import java.util.List;
 
@@ -82,6 +83,21 @@ public class Main {
         navigator.setStrategy(new TouristAttractionRouteStrategy());
         navigator.buildRoute("Park", "Historic Castle");
 
+        System.out.println("\n\n");
+
+        // Testing TEMPLATE METHOD pattern
+        DocumentProcessor doc = new DocProcessor();
+        doc.processDocument("resume.doc");
+
+        System.out.println("\n---\n");
+
+        DocumentProcessor csv = new CsvProcessor();
+        csv.processDocument("data.csv");
+
+        System.out.println("\n---\n");
+
+        DocumentProcessor pdf = new PdfProcessor();
+        pdf.processDocument("report.pdf");
         System.out.println("\n\n");
     }
 }
