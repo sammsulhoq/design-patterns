@@ -1,7 +1,12 @@
+import iterator.FaceBook;
+import iterator.Profile;
+import iterator.ProfileIterator;
 import memento.Editor;
 import memento.History;
 import state.Document;
 import state.User;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -36,5 +41,29 @@ public class Main {
         document.publish(adminUser); // Moderation -> Published
 
         document.publish(adminUser); // Does nothing as document is already published
+        System.out.println("\n\n");
+
+        // Testing ITERATOR pattern
+        Profile alice = new Profile("alice@company.com", "Alice", "CompanyA");
+        Profile bob = new Profile("bob@company.com", "Bob", "CompanyA");
+        Profile charlie = new Profile("charlie@other.com", "Charlie", "CompanyB");
+        Profile diana = new Profile("diana@company.com", "Diana", "CompanyA");
+
+        FaceBook facebook = new FaceBook();
+        facebook.addFriends("alice@company.com", List.of(bob, charlie, diana));
+
+        // Get friends iterator
+        System.out.println("Alice's Friends:");
+        ProfileIterator friendsIterator = facebook.createFriendsIterator("alice@company.com");
+        while (friendsIterator.hasNext()) {
+            System.out.println(friendsIterator.getNext());
+        }
+
+        // Get colleagues iterator
+        System.out.println("\nAlice's Colleagues:");
+        ProfileIterator colleaguesIterator = facebook.createColleaguesIterator("alice@company.com");
+        while (colleaguesIterator.hasNext()) {
+            System.out.println(colleaguesIterator.getNext());
+        }
     }
 }
