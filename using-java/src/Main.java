@@ -1,5 +1,6 @@
 import command.*;
 import iterator.*;
+import mediator.CustomerProfileDialog;
 import memento.*;
 import observer.*;
 import state.*;
@@ -150,6 +151,27 @@ public class Main {
 
             // Nothing happens for iPad Air, no one is subscribed
         appleStore.addNewProduct("iPad Air");
+        System.out.println("\n\n");
+
+        // Testing MEDIATOR pattern
+        CustomerProfileDialog dialog = new CustomerProfileDialog();
+        dialog.setup();
+
+        dialog.customerNameField.setText("John Doe");
+
+        dialog.hasDogCheckbox.toggle(); // Reveal dog name field
+        dialog.dogNameField.setText("Buddy");
+
+        dialog.submitButton.click(); // Valid submission
+
+        System.out.println("\n---\n");
+
+        // Try submitting without dog name
+        dialog.hasDogCheckbox.toggle(); // Uncheck
+        dialog.hasDogCheckbox.toggle(); // Re-check to reveal again
+        dialog.dogNameField.setText(""); // Reset dog name
+
+        dialog.submitButton.click(); // Should throw error
         System.out.println("\n\n");
     }
 }
