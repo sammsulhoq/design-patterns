@@ -1,6 +1,7 @@
 import command.*;
 import iterator.*;
 import memento.*;
+import observer.*;
 import state.*;
 import strategy.*;
 import template.*;
@@ -127,6 +128,28 @@ public class Main {
         ctrlC.press();
         ctrlV.press();
         ctrlZ.press();
+        System.out.println("\n\n");
+
+        // Testing OBSERVER pattern
+        Store appleStore = new Store();
+
+        Customer customer1 = new Customer("Alice");
+        Customer customer2 = new Customer("Bob");
+        Customer customer3 = new Customer("Charlie");
+
+            // Alice and Charlie are interested in iPhone 15
+        appleStore.registerObserver("iPhone 15", customer1);
+        appleStore.registerObserver("iPhone 15", customer3);
+
+            // Bob is interested in MacBook Pro
+        appleStore.registerObserver("MacBook Pro", customer2);
+
+            // Product released
+        appleStore.addNewProduct("iPhone 15");
+        appleStore.addNewProduct("MacBook Pro");
+
+            // Nothing happens for iPad Air, no one is subscribed
+        appleStore.addNewProduct("iPad Air");
         System.out.println("\n\n");
     }
 }
