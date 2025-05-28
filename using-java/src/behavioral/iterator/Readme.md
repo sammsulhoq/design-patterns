@@ -1,3 +1,16 @@
+# Iterator
+Iterator is a behavioral design pattern that lets you traverse elements of a collection without exposing its underlying representation (list, stack, tree, etc.).
+
+## Problem
+We want to navigate a specialized collection that manages access to Facebook’s social graph. This collection offers multiple iterators for traversing profiles in distinct ways, such as a ‘friends’ iterator that retrieves a given profile’s friends and a ‘colleagues’ iterator that filters out those who do not work at the same company. Both iterators adhere to a shared interface, enabling clients to access profiles without worrying about authentication or API interactions. Because the client code interacts with collections and iterators solely through interfaces, it remains decoupled from concrete implementations. If a new social network needs integration, developers can introduce new collection and iterator classes without modifying the existing system, ensuring flexibility and maintainability.
+
+## Solution
+The ‘friends’ iterator can be used to go over the friends of a given profile. The ‘colleagues’ iterator does the same, except it omits friends who don’t work at the same company as a target person. Both iterators implement a common interface which allows clients to fetch profiles without diving into implementation details such as authentication and sending REST requests.
+
+The client code isn’t coupled to concrete classes because it works with collections and iterators only through interfaces. If you decide to connect your app to a new social network, you simply need to provide new collection and iterator classes without changing the existing code.
+
+![img.png](img.png)
+
 ## Applicability
 - Use the Iterator pattern when your collection has a complex data structure under the hood, but you want to hide its complexity from clients (either for convenience or security reasons).
 -  Use the pattern to reduce duplication of the traversal code across your app.

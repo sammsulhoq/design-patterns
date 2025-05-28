@@ -1,3 +1,20 @@
+# Mediator
+Mediator is a behavioral design pattern that lets you reduce chaotic dependencies between objects. The pattern restricts direct communications between the objects and forces them to collaborate only via a mediator object.
+
+## Problem
+Say you have a dialog for creating and editing customer profiles. It consists of various form controls such as text fields, checkboxes, buttons, etc.
+
+Some of the form elements may interact with others. For instance, selecting the “I have a dog” checkbox may reveal a hidden text field for entering the dog’s name. Another example is the submit button that has to validate values of all fields before saving the data.
+
+By having this logic implemented directly inside the code of the form elements you make these elements’ classes much harder to reuse in other forms of the app. For example, you won’t be able to use that checkbox class inside another form, because it’s coupled to the dog’s text field. You can use either all the classes involved in rendering the profile form, or none at all.
+
+## Solution
+The Mediator pattern promotes loose coupling by eliminating direct communication between components, instead routing interactions through a mediator object. This approach allows components to remain independent, relying only on a single mediator class rather than multiple interconnected dependencies. In the case of a profile editing form, the dialog class itself can serve as the mediator, managing its sub-elements without introducing unnecessary dependencies.
+
+A key improvement is seen in elements like the submit button. Previously, clicking it triggered validation for all form fields directly. With the mediator, the button simply notifies the dialog, which then performs validation or delegates the task to the appropriate elements. This reduces dependencies and simplifies the button’s role. By further abstracting dialogs through a shared interface, form elements can notify any compatible dialog about events, enhancing flexibility. Ultimately, the Mediator pattern encapsulates complex relationships within a single object, making code easier to maintain, modify, and reuse.
+
+![img.png](img.png)
+
 ## Applicability
 - Use the Mediator pattern when it’s hard to change some of the classes because they are tightly coupled to a bunch of other classes.
 - Use the pattern when you can’t reuse a component in a different program because it’s too dependent on other components.

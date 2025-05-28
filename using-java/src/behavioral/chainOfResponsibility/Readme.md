@@ -1,3 +1,18 @@
+# Chain Of Responsibility
+
+Chain of Responsibility is a behavioral design pattern that lets you pass requests along a chain of handlers. Upon receiving a request, each handler decides either to process the request or to pass it to the next handler in the chain.
+
+## Problem 
+While developing an online ordering system, you aimed to restrict access so only authenticated users could create orders, while administrators had full access to all orders. Over time, you implemented sequential security checks, starting with user authentication and adding steps such as data sanitization, protection against brute-force attacks, and caching optimizations. Each new feature made the system more complex, causing the code to become bloated and difficult to maintain. As modifying one check often affected others, reusing these validations across different components required code duplication, further increasing maintenance costs. Eventually, the increasing complexity led you to refactor the entire system for better efficiency and manageability.
+
+## Solution
+Like many other behavioral design patterns, the Chain of Responsibility relies on transforming particular behaviors into stand-alone objects called handlers. In our case, each check should be extracted to its own class with a single method that performs the check. The request, along with its data, is passed to this method as an argument.
+
+The pattern suggests that you link these handlers into a chain. Each linked handler has a field for storing a reference to the next handler in the chain. In addition to processing a request, handlers pass the request further along the chain. The request travels along the chain until all handlers have had a chance to process it.
+
+Here’s the best part: a handler can decide not to pass the request further down the chain and effectively stop any further processing.
+![img.png](img.png)
+
 ## Applicability
 - Use the Chain of Responsibility pattern when your program is expected to process different kinds of requests in various ways, but the exact types of requests and their sequences are unknown beforehand.
 - Use the pattern when it’s essential to execute several handlers in a particular order.

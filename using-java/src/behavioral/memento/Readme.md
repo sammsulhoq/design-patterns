@@ -1,3 +1,20 @@
+# Memento
+Memento is a behavioral design pattern that lets you save and restore the previous state of an object without revealing the details of its implementation.
+
+## Problem
+Imagine that you’re creating a text editor app. In addition to simple text editing, your editor can format text, insert inline images, etc.
+
+At some point, you decided to let users undo any operations carried out on the text. This feature has become so common over the years that nowadays people expect every app to have it. For the implementation, you chose to take the direct approach. Before performing any operation, the app records the state of all objects and saves it in some storage. Later, when a user decides to revert an action, the app fetches the latest snapshot from the history and uses it to restore the state of all objects.
+
+## Solution
+The Memento pattern resolves this by ensuring state snapshots are created by the state’s owner—the originator object. Instead of external components copying the editor’s state, the editor itself generates snapshots, leveraging full access to its own data.
+
+These snapshots are stored in specialized objects called mementos, which encapsulate the state and restrict access. Only the originator can retrieve the stored state, while other components interact with mementos through a limited interface, allowing access to metadata like creation time or operation history but not the internal state itself. This separation enables mementos to be managed by caretaker objects, which maintain them without modifying their contents.
+
+In a text editor, a dedicated history class can act as a caretaker, maintaining a stack of mementos that records each operation. This stack can even be visualized within the UI, showing users their action history. When an undo action is triggered, the history retrieves the latest memento and passes it to the editor for a rollback. Since the editor has unrestricted access to its mementos, it can restore its previous state seamlessly, ensuring efficient version control.
+
+![img.png](img.png)
+
 ## Applicability
 - Use the Memento pattern when you want to produce snapshots of the object’s behavioral.state to be able to restore a previous behavioral.state of the object.
 - Use the pattern when direct access to the object’s fields/getters/setters violates its encapsulation.
