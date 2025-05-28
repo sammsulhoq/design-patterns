@@ -1,3 +1,4 @@
+import command.*;
 import iterator.*;
 import memento.*;
 import state.*;
@@ -98,6 +99,34 @@ public class Main {
 
         DocumentProcessor pdf = new PdfProcessor();
         pdf.processDocument("report.pdf");
+        System.out.println("\n\n");
+
+        // Testing COMMAND pattern
+        EditorApplication editorApplication = new EditorApplication();
+
+            // Create commands
+        Command copy = new CopyCommand(editorApplication);
+        Command paste = new PasteCommand(editorApplication);
+        Command undo = new UndoCommand(editorApplication);
+
+            // Create UI buttons
+        Button copyBtn = new Button("Copy", copy);
+        Button pasteBtn = new Button("Paste", paste);
+        Button undoBtn = new Button("Undo", undo);
+
+            // Keyboard shortcuts
+        KeyboardShortcut ctrlC = new KeyboardShortcut("Ctrl+C", copy);
+        KeyboardShortcut ctrlV = new KeyboardShortcut("Ctrl+V", paste);
+        KeyboardShortcut ctrlZ = new KeyboardShortcut("Ctrl+Z", undo);
+
+            // Trigger commands
+        copyBtn.click();
+        pasteBtn.click();
+        undoBtn.click();
+
+        ctrlC.press();
+        ctrlV.press();
+        ctrlZ.press();
         System.out.println("\n\n");
     }
 }
