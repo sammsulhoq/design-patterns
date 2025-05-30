@@ -1,5 +1,6 @@
 package structural;
 
+import structural.adapter.*;
 import structural.composite.*;
 
 public class Main {
@@ -21,6 +22,20 @@ public class Main {
 
         System.out.println("Total order price for Main Box: $" + mainBox.getPrice());
         System.out.println("Total order price for Accessory Boz: $" + accessoryBox.getPrice());
+        System.out.println("\n\n");
+
+        // Testing ADAPTER pattern
+        StockDataXMLProvider xmlProvider = new StockDataXMLProvider();
+
+            // Adapter to convert XML to JSON
+        StockDataAdapter adapter = new StockDataAdapter(xmlProvider);
+
+            // 3rd-party analytics consumer
+        StockDataJSONConsumer analyticsLib = new StockDataJSONConsumer();
+
+            // Convert XML to JSON and pass to analytics library
+        String jsonData = adapter.getStockDataAsJSON();
+        analyticsLib.processStockData(jsonData);
         System.out.println("\n\n");
     }
 }
