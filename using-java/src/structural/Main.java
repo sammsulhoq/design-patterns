@@ -1,6 +1,7 @@
 package structural;
 
 import structural.adapter.*;
+import structural.bridge.*;
 import structural.composite.*;
 
 public class Main {
@@ -36,6 +37,16 @@ public class Main {
             // Convert XML to JSON and pass to analytics library
         String jsonData = adapter.getStockDataAsJSON();
         analyticsLib.processStockData(jsonData);
+        System.out.println("\n\n");
+
+        // Testing BRIDGE pattern
+        Shape redCircle = new Circle(new Red());
+        Shape blueSquare = new Square(new Blue());
+        Shape greenTriangle = new Triangle(new Green());
+
+        redCircle.draw();
+        blueSquare.draw();
+        greenTriangle.draw();
         System.out.println("\n\n");
     }
 }
