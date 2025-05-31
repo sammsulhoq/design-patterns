@@ -17,6 +17,13 @@ The Observer pattern suggests that you add a subscription mechanism to the publi
 
 ![img.png](img.png)
 
+## Real-World Analogy
+If you subscribe to a newspaper or magazine, you no longer need to go to the store to check if the next issue is available. Instead, the publisher sends new issues directly to your mailbox right after publication or even in advance.
+
+The publisher maintains a list of subscribers and knows which magazines they’re interested in. Subscribers can leave the list at any time when they wish to stop the publisher sending new magazine issues to them.
+
+![img_1.png](img_1.png)
+
 ## Applicability
 - Use the Observer pattern when changes to the behavioral.state of one object may require changing other objects, and the actual set of objects is unknown beforehand or changes dynamically.
 - Use the pattern when some objects in your app must observe others, but only for a limited time or in specific cases.

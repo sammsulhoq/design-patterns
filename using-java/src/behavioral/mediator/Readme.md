@@ -15,6 +15,13 @@ A key improvement is seen in elements like the submit button. Previously, clicki
 
 ![img.png](img.png)
 
+## Real-World Analogy
+Pilots of aircraft that approach or depart the airport control area don’t communicate directly with each other. Instead, they speak to an air traffic controller, who sits in a tall tower somewhere near the airstrip. Without the air traffic controller, pilots would need to be aware of every plane in the vicinity of the airport, discussing landing priorities with a committee of dozens of other pilots. That would probably skyrocket the airplane crash statistics.
+
+The tower doesn’t need to control the whole flight. It exists only to enforce constraints in the terminal area because the number of involved actors there might be overwhelming to a pilot.
+
+![img_1.png](img_1.png)
+
 ## Applicability
 - Use the Mediator pattern when it’s hard to change some of the classes because they are tightly coupled to a bunch of other classes.
 - Use the pattern when you can’t reuse a component in a different program because it’s too dependent on other components.

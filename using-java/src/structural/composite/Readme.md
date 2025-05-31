@@ -15,6 +15,11 @@ The main advantage of this approach is that objects can be treated uniformly, re
 
 ![img.png](img.png)
 
+## Real World Analogy
+Armies of most countries are structured as hierarchies. An army consists of several divisions; a division is a set of brigades, and a brigade consists of platoons, which can be broken down into squads. Finally, a squad is a small group of real soldiers. Orders are given at the top of the hierarchy and passed down onto each level until every soldier knows what needs to be done.
+
+![img_1.png](img_1.png)
+
 ## Applicability
 - Use the Composite pattern when you have to implement a tree-like object structure.
 - Use the pattern when you want the client code to treat both simple and complex elements uniformly.

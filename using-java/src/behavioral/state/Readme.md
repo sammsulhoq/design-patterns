@@ -19,6 +19,15 @@ This structure may look similar to the Strategy pattern, but there’s one key d
 
 ![img.png](img.png)
 
+## Real World Analogy
+The buttons and switches in your smartphone behave differently depending on the current state of the device:
+
+   * When the phone is unlocked, pressing buttons leads to executing various functions. 
+   * When the phone is locked, pressing any button leads to the unlock screen. 
+   * When the phone’s charge is low, pressing any button shows the charging screen.
+
+![img_1.png](img_1.png)
+
 ## Applicability
 - Use the State pattern when you have an object that behaves differently depending on its current behavioral.state, the number of states is enormous, and the behavioral.state-specific code changes frequently.
 - Use the pattern when you have a class polluted with massive conditionals that alter how the class behaves according to the current values of the class’s fields.

@@ -15,6 +15,11 @@ Applying this principle to a game, particles such as bullets, missiles, and shra
 
 ![img.png](img.png)
 
+## Real World Analogy
+The Flyweight design pattern can be compared to printing letters in a book. Imagine a book with thousands of pages—each page contains repeated characters like 'A', 'B', and 'C'. Instead of storing a separate copy of each letter for every occurrence, the book's printing system uses a shared set of letter templates. These templates (intrinsic state) remain constant, while the position and formatting of each letter (extrinsic state) vary across pages. This approach minimizes memory usage while maintaining flexibility.
+
+![img_1.png](img_1.png)
+
 ## Applicability
 - Use the Flyweight pattern only when your program must support a huge number of objects which barely fit into available RAM.
 

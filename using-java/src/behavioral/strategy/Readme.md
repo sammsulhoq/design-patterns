@@ -15,6 +15,11 @@ In a navigation app, different routing algorithms can be defined in separate cla
 
 ![img.png](img.png)
 
+## Real-World Analogy
+Imagine that you have to get to the airport. You can catch a bus, order a cab, or get on your bicycle. These are your transportation strategies. You can pick one of the strategies depending on factors such as budget or time constraints.
+
+![img_1.png](img_1.png)
+
 ## Applicability
 - Use the Strategy pattern when you want to use different variants of an algorithm within an object and be able to switch from one algorithm to another during runtime.
 - Use the Strategy when you have a lot of similar classes that only differ in the way they execute some behavior.

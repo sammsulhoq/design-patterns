@@ -11,6 +11,13 @@ Command objects serve as links between various GUI and business logic objects. F
 
 ![img.png](img.png)
 
+## Real-World Analogy
+After a long walk through the city, you get to a nice restaurant and sit at the table by the window. A friendly waiter approaches you and quickly takes your order, writing it down on a piece of paper. The waiter goes to the kitchen and sticks the order on the wall. After a while, the order gets to the chef, who reads it and cooks the meal accordingly. The cook places the meal on a tray along with the order. The waiter discovers the tray, checks the order to make sure everything is as you wanted it, and brings everything to your table.
+
+The paper order serves as a command. It remains in a queue until the chef is ready to serve it. The order contains all the relevant information required to cook the meal. It allows the chef to start cooking right away instead of running around clarifying the order details from you directly.
+
+![img_1.png](img_1.png)
+
 ## Applicability
 - Use the Command pattern when you want to parametrize objects with operations.
 - Use the Command pattern when you want to queue operations, schedule their execution, or execute them remotely.

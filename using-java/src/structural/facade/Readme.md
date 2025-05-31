@@ -13,6 +13,11 @@ Facades are particularly useful when integrating an application with a sophistic
 
 ![img.png](img.png)
 
+## Real-World Analogy
+When you call a shop to place a phone order, an operator is your facade to all services and departments of the shop. The operator provides you with a simple voice interface to the ordering system, payment gateways, and various delivery services.
+
+![img_1.png](img_1.png)
+
 ## Applicability
 - Use the Facade pattern when you need to have a limited but straightforward interface to a complex subsystem.
 - Use the Facade when you want to structure a subsystem into layers.

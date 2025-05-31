@@ -13,6 +13,13 @@ In a data mining application, a base class can define the sequence of document-p
 
 ![img.png](img.png)
 
+## Real-World Analogy
+The template method approach can be used in mass housing construction. The architectural plan for building a standard house may contain several extension points that would let a potential owner adjust some details of the resulting house.
+
+Each building step, such as laying the foundation, framing, building walls, installing plumbing and wiring for water and electricity, etc., can be slightly changed to make the resulting house a little bit different from others.
+
+![img_1.png](img_1.png)
+
 ## Applicability
 - Use the Template Method pattern when you want to let clients extend only particular steps of an algorithm, but not the whole algorithm or its structure.
 - Use the pattern when you have several classes that contain almost identical algorithms with some minor differences. As a result, you might need to modify all classes when the algorithm changes.

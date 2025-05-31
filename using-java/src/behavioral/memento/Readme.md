@@ -15,6 +15,10 @@ In a text editor, a dedicated history class can act as a caretaker, maintaining 
 
 ![img.png](img.png)
 
+## Real World Analogy
+Imagine a photo studio where a person (represented by the upright walking paper with text) is getting their photo taken at different poses and stages. The camera captures these moments and saves them as photographs. These photos are then stored in a "History" wall — each representing a previous state of that person.
+![img_1.png](img_1.png)
+
 ## Applicability
 - Use the Memento pattern when you want to produce snapshots of the object’s behavioral.state to be able to restore a previous behavioral.state of the object.
 - Use the pattern when direct access to the object’s fields/getters/setters violates its encapsulation.
