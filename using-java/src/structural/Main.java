@@ -4,7 +4,8 @@ import structural.adapter.*;
 import structural.bridge.*;
 import structural.composite.*;
 import structural.decorator.*;
-import structural.facade.MediaPlayerFacade;
+import structural.facade.*;
+import structural.flyweight.*;
 
 import java.util.List;
 
@@ -64,5 +65,22 @@ public class Main {
         // The FACADE pattern
         MediaPlayerFacade mediaPlayer = new MediaPlayerFacade();
         mediaPlayer.play("holiday_trip.mp4");
+        System.out.println("\n\n");
+
+        // The FLYWEIGHT pattern
+        Game game = new Game();
+
+            // Simulate thousands of particles
+        for (int i = 0; i < 10; i++) {
+            game.spawn("Bullet", "bullet.png", "gray");
+            game.spawn("Missile", "missile.png", "red");
+            game.spawn("Shrapnel", "metal.png", "silver");
+        }
+
+        game.drawParticles();
+
+        System.out.println("\nTotal Particles: " + game.getParticleCount());
+        System.out.println("Unique Particle Types (Flyweights): " + ParticleFactory.getTotalTypes());
+        System.out.println("\n\n");
     }
 }
