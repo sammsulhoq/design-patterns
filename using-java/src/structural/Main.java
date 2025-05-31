@@ -3,6 +3,9 @@ package structural;
 import structural.adapter.*;
 import structural.bridge.*;
 import structural.composite.*;
+import structural.decorator.*;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -47,6 +50,14 @@ public class Main {
         redCircle.draw();
         blueSquare.draw();
         greenTriangle.draw();
+        System.out.println("\n\n");
+
+        // Testing DECORATOR pattern
+        Notifier emailNotifier = new EmailNotifier(List.of("alice@example.com", "bob@example.com"));
+        Notifier facebookNotifier = new FacebookDecorator(emailNotifier, "alice.fb");
+        Notifier slackNotifier = new SlackDecorator(facebookNotifier, "alerts");
+        Notifier multiNotifier = new SMSDecorator(slackNotifier, "+123456789");
+        multiNotifier.send("🔥 CRITICAL: Server is down!");
         System.out.println("\n\n");
     }
 }
