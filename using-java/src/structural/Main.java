@@ -6,6 +6,7 @@ import structural.composite.*;
 import structural.decorator.*;
 import structural.facade.*;
 import structural.flyweight.*;
+import structural.proxy.*;
 
 import java.util.List;
 
@@ -82,5 +83,30 @@ public class Main {
         System.out.println("\nTotal Particles: " + game.getParticleCount());
         System.out.println("Unique Particle Types (Flyweights): " + ParticleFactory.getTotalTypes());
         System.out.println("\n\n");
+
+        // The PROXY pattern
+        DataFetcher dataFetcher = new CachingDataFetcherProxy();
+
+        long start, end;
+
+        start = System.currentTimeMillis();
+        System.out.println(dataFetcher.fetchData("select * from users"));
+        end = System.currentTimeMillis();
+        System.out.println("Time taken: " + (end - start) + "ms\n");
+
+        start = System.currentTimeMillis();
+        System.out.println(dataFetcher.fetchData("select * from users")); // cached
+        end = System.currentTimeMillis();
+        System.out.println("Time taken: " + (end - start) + "ms\n");
+
+        start = System.currentTimeMillis();
+        System.out.println(dataFetcher.fetchData("select * from orders"));
+        end = System.currentTimeMillis();
+        System.out.println("Time taken: " + (end - start) + "ms\n");
+
+        start = System.currentTimeMillis();
+        System.out.println(dataFetcher.fetchData("select * from orders")); // cached
+        end = System.currentTimeMillis();
+        System.out.println("Time taken: " + (end - start) + "ms");
     }
 }
