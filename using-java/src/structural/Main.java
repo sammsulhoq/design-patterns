@@ -4,6 +4,7 @@ import structural.adapter.*;
 import structural.bridge.*;
 import structural.composite.*;
 import structural.decorator.*;
+import structural.facade.MediaPlayerFacade;
 
 import java.util.List;
 
@@ -59,5 +60,9 @@ public class Main {
         Notifier multiNotifier = new SMSDecorator(slackNotifier, "+123456789");
         multiNotifier.send("🔥 CRITICAL: Server is down!");
         System.out.println("\n\n");
+
+        // The FACADE pattern
+        MediaPlayerFacade mediaPlayer = new MediaPlayerFacade();
+        mediaPlayer.play("holiday_trip.mp4");
     }
 }
