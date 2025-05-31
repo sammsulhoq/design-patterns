@@ -85,28 +85,14 @@ public class Main {
         System.out.println("\n\n");
 
         // The PROXY pattern
-        DataFetcher dataFetcher = new CachingDataFetcherProxy();
+        DbContext dbContext = new DbContext();
 
-        long start, end;
+        EntityProxy entity1 = new EntityProxy("Initial Data");
+        dbContext.trackEntity(entity1);
 
-        start = System.currentTimeMillis();
-        System.out.println(dataFetcher.fetchData("select * from users"));
-        end = System.currentTimeMillis();
-        System.out.println("Time taken: " + (end - start) + "ms\n");
+        entity1.setData("Updated Data");
 
-        start = System.currentTimeMillis();
-        System.out.println(dataFetcher.fetchData("select * from users")); // cached
-        end = System.currentTimeMillis();
-        System.out.println("Time taken: " + (end - start) + "ms\n");
-
-        start = System.currentTimeMillis();
-        System.out.println(dataFetcher.fetchData("select * from orders"));
-        end = System.currentTimeMillis();
-        System.out.println("Time taken: " + (end - start) + "ms\n");
-
-        start = System.currentTimeMillis();
-        System.out.println(dataFetcher.fetchData("select * from orders")); // cached
-        end = System.currentTimeMillis();
-        System.out.println("Time taken: " + (end - start) + "ms");
+        dbContext.saveChanges();
+        System.out.println("\n\n");
     }
 }
