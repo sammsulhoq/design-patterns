@@ -2,6 +2,7 @@ package creational;
 
 import creational.abstractFactory.*;
 import creational.builder.*;
+import creational.factory.* ;
 
 public class Main {
     public static void main(String[] args) {
@@ -41,5 +42,15 @@ public class Main {
 
         luxuryVilla.describe();
         System.out.println("\n\n");
+
+        // Testing FACTORY METHOD pattern
+        Logistics road = new RoadLogistics();
+        Logistics sea = new SeaLogistics();
+
+        System.out.println("Road Logistics:");
+        road.planDelivery();
+
+        System.out.println("\nSea Logistics:");
+        sea.planDelivery();
     }
 }
