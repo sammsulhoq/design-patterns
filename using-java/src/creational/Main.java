@@ -3,6 +3,7 @@ package creational;
 import creational.abstractFactory.*;
 import creational.builder.*;
 import creational.factory.* ;
+import creational.prototype.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -52,5 +53,24 @@ public class Main {
 
         System.out.println("\nSea Logistics:");
         sea.planDelivery();
+        System.out.println("\n\n");
+
+        // Testing PROTOTYPE pattern
+        Address address = new Address("New York", "10001");
+        Person original = new Person("Alice", 30, address);
+
+        System.out.println("Original:");
+        original.print();
+
+        System.out.println("\nCloning...");
+        Person cloned = original.clone();
+
+        // Modify clone
+        cloned.setName("Bob");
+        cloned.print();
+
+        System.out.println("\nOriginal remains unchanged:");
+        original.print();
+        System.out.println("\n\n");
     }
 }
