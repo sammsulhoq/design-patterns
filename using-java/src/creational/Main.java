@@ -4,6 +4,7 @@ import creational.abstractFactory.*;
 import creational.builder.*;
 import creational.factory.* ;
 import creational.prototype.*;
+import creational.singleton.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -65,12 +66,22 @@ public class Main {
         System.out.println("\nCloning...");
         Person cloned = original.clone();
 
-        // Modify clone
+            // Modify clone
         cloned.setName("Bob");
         cloned.print();
 
         System.out.println("\nOriginal remains unchanged:");
         original.print();
         System.out.println("\n\n");
+
+        // Testing SINGLETON pattern
+        Logger logger1 = Logger.getInstance();
+        logger1.log("App started");
+
+        Logger logger2 = Logger.getInstance();
+        logger2.log("User logged in");
+
+            // Check if both references point to the same object
+        System.out.println("logger1 == logger2 ? " + (logger1 == logger2));
     }
 }
